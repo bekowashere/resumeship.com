@@ -198,7 +198,8 @@ PARLER_LANGUAGES = {
     None: (
         {'code': 'en',},
         {'code': 'it',},
-        {'code': 'nl',},
+        {'code': 'fr',},
+        {'code': 'es',},
     ),
     'default': {
         'fallbacks': ['en'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
