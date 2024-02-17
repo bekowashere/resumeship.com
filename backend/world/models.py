@@ -16,9 +16,9 @@ class Country(TranslatableModel):
         url = models.URLField(_("Webpage"), max_length=200, blank=True)
     )
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = _("Country")
         verbose_name_plural = _("Countries")
-
-    def __str__(self):
-        return self.name

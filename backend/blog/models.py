@@ -8,11 +8,16 @@ from django.core.validators import FileExtensionValidator
 from parler.models import TranslatableModel, TranslatedFields
 
 class Category(TranslatableModel):
+    """
+    Category database model.
+    """
+    
+    slug = models.SlugField(_('Slug'), unique=True, blank=True)
+    
     translations = TranslatedFields(
         title = models.CharField(_('Title'), max_length=128),
         summary = models.TextField(_('Summary'), null=True, blank=True)
     )
-    slug = models.SlugField(_('Slug'), unique=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -23,7 +28,6 @@ class Category(TranslatableModel):
         super().save(*args, **kwargs) 
     
     class Meta:
-        ordering = ('translations__title',)
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
 

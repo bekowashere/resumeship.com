@@ -1,8 +1,8 @@
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
-from django.utils.html import format_html
+from blog.models import Category
 from parler.admin import TranslatableAdmin
-from blog.models import Category, Post
+from django.utils.translation import gettext_lazy as _
+
 
 @admin.register(Category)
 class CategoryAdmin(TranslatableAdmin):

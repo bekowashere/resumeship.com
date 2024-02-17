@@ -4,17 +4,8 @@ from rest_framework.generics import (
     RetrieveAPIView
 )
 
-# Rest Framework Filters
-import django_filters
-from rest_framework.filters import SearchFilter, OrderingFilter
-from django_filters.rest_framework import DjangoFilterBackend
-
-# Rest Framework Helpers
-from rest_framework.response import Response
-from rest_framework import status
-
 # Models
-from blog.models import Category, Post
+from blog.models import Category
 
 # Serializers
 from blog.api.serializers import CategorySerializer
