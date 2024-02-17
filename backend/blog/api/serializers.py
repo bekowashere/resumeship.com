@@ -1,10 +1,11 @@
 from rest_framework import serializers
 from parler_rest.serializers import TranslatableModelSerializer, TranslatedFieldsField
-from apps.blog.models import Category, Post
+from blog.models import Category, Post
+from core.mixins import TranslatedSerializerMixin
 
-class CategorySerializer(TranslatableModelSerializer):
+class CategorySerializer(TranslatedSerializerMixin, TranslatableModelSerializer):
     translations = TranslatedFieldsField(shared_model=Category)
 
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ('id', 'slug', 'translations')

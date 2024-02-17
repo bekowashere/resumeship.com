@@ -38,9 +38,10 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.academy.apps.AcademyConfig',
-    'apps.account.apps.AccountConfig',
-    'apps.blog.apps.BlogConfig',
+    'academy',
+    'account',
+    'blog',
+    'world'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -121,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -192,20 +193,24 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-# PARLER
 PARLER_DEFAULT_LANGUAGE_CODE = 'en'
 PARLER_LANGUAGES = {
     None: (
         {'code': 'en',},
-        {'code': 'it',},
-        {'code': 'fr',},
-        {'code': 'es',},
+        # {'code': 'en-us',},
+        # {'code': 'it',},
+        {'code': 'nl',},
+        {'code': 'de',},
+        # {'code': 'fr',},
+        # {'code': 'es',},
+        # {'code': 'tr',},
     ),
     'default': {
         'fallbacks': ['en'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
         'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
     }
 }
+
 
 CORS_ALLOWED_ORIGINS = [
     "https://example.com",

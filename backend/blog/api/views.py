@@ -14,11 +14,16 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Models
-from apps.blog.models import Category, Post
+from blog.models import Category, Post
 
 # Serializers
-from apps.blog.api.serializers import CategorySerializer
+from blog.api.serializers import CategorySerializer
 
 class CategoryListAPIView(ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+class CategoryDetailAPIView(RetrieveAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    

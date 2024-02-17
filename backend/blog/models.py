@@ -17,10 +17,6 @@ class Category(TranslatableModel):
     def __str__(self):
         return self.title
     
-    @property
-    def post_count(self):
-        return self.category_posts.all().count()
-    
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
