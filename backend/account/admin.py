@@ -48,7 +48,7 @@ class MyUserAdmin(UserAdmin):
 class UserSummaryAdmin(admin.ModelAdmin):
     fieldsets = (
         (_('User'), {'fields': ('user',)}),
-        (_('Description'), {'fields': ('description')})
+        (_('Description'), {'fields': ('description',)})
     )
 
     list_display = ['user']
