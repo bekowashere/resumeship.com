@@ -83,7 +83,7 @@ class Post(TranslatableModel):
         return self.title
     
     # def get_absolute_url(self):
-    #     return reverse("academy:university-detail", kwargs={"university_id": self.university_id})
+    #     return reverse("blog:blog-detail", kwargs={"id": self.id})
     
     def save(self, *args, **kwargs):
         if not self.slug:

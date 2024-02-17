@@ -41,6 +41,7 @@ LOCAL_APPS = [
     'academy',
     'account',
     'blog',
+    'subscription',
     'world'
 ]
 
@@ -147,6 +148,9 @@ MEDIA_ROOT = BASE_DIR / 'static/media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# USER MODEL
+AUTH_USER_MODEL = 'account.User'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
