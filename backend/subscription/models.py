@@ -2,13 +2,19 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from account.models import User
 from datetime import date, timedelta
+from uuid import uuid4
 
 """
-Plan: Free - Basic - Pro
-Plan Feature?
-Subscription
+Plan Features?
 """
+
 class Plan(models.Model):
+    id = models.UUIDField(
+        default=uuid4,
+        editable=False,
+        primary_key=True,
+        verbose_name='ID',
+    )
     name = models.CharField(_('Plan Name'), max_length=48)
     description = models.TextField(_('Description'), null=True, blank=True)
     slug = models.SlugField(_('Slug'), unique=True)
@@ -17,6 +23,23 @@ class Plan(models.Model):
         max_digits=9,
         decimal_places=2
     )
+
+    # Subscription
+    @property
+    def total_subscriptions_count(self):
+        return self.plan_subscriptions.all().count()
+    
+    @property
+    def total_subscriptions(self):
+        return self.plan_subscriptions.all()
+    
+    #
+    @property
+    def total_earnings(self):
+        if self.price is not None:
+            return (self.total_subscriptions_count * self.price)
+        else:
+            return 0
 
     def __str__(self) -> str:
         return self.name
@@ -29,6 +52,13 @@ class Subscription(models.Model):
     class PeriodChoices(models.IntegerChoices):
         M = 0, _("Monthly")
         Y = 1, _("Yearly ")
+
+    id = models.UUIDField(
+        default=uuid4,
+        editable=False,
+        primary_key=True,
+        verbose_name='ID',
+    )
 
     user = models.ForeignKey(
         User,
