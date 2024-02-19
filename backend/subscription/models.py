@@ -60,6 +60,7 @@ class Subscription(models.Model):
         verbose_name='ID',
     )
 
+    # OneToOne? Each user can only have 1 subscription.
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
